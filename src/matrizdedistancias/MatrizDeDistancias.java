@@ -12,6 +12,16 @@ public class MatrizDeDistancias {
         int distancias[][] = new int[n][n];
         int[] vet = new int[n];
         int i, j;
+
+        //Início do cálculo do BFS 
+        BFS bfs = new BFS();
+        for (i = 0; i < g.vertices.length; i++) {
+            bfs.buscaEmLargura(g, g.vertices[i]);
+            vet = bfs.getVet();
+            for (j = 0; j < n; j++){
+                distancias[g.vertices[i].getIndice()][j] = vet[j];
+            }
+        }
     }
     
 }
