@@ -71,7 +71,25 @@ public class BFS {
                 }
             }
             distancias[u.getIndice()].cor = Cores.PRETO;
-        }   
+        }  
+        
+        vet = new int[totaldevertices];
+        //System.out.println("Impriminto vet:");
+        for(i = 0; i < totaldevertices; i ++){
+            vet[i] = distancias[i].d;
+            //vet[i] = matDistancia[s.indice][i];
+            //System.out.print(vet[i]+" ");
+        }
+        
+        //Fim do BFS para o vértice dado e impressão da matriz de distâncias referente ao vértice
+        /*for (i = 0; i < totaldevertices; i++) {
+            if(matDistancia[s.indice][i] == 0 && s.indice!=i){
+                System.out.print(". ");
+            } else{
+                System.out.print(matDistancia[s.indice][i]+" ");
+            }            
+        }
+        System.out.println("");*/      
     }
     
     public int[][] getMatDistancia(){
