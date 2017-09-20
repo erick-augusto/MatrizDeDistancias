@@ -22,6 +22,18 @@ public class MatrizDeDistancias {
                 distancias[g.vertices[i].getIndice()][j] = vet[j];
             }
         }
+
+        //Impressão da matriz de distâncias
+        for (i = 0; i < n; i++) {
+            for (j = 0; j < n; j++) {
+                if(distancias[i][j] == Constantes.INFINITO){
+                    System.out.print(". ");
+                } else{
+                    System.out.print(distancias[i][j]+" ");                
+                }
+            }
+            System.out.println("");
+        }
     }
     
 }
