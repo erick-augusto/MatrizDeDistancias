@@ -42,7 +42,36 @@ public class BFS {
             for (j = 0; j < totaldevertices; j++) {
                 matDistancia[i][j] = 0;
             }
-        }     
+        }
+        
+        //Começo do BFS pelo vértice dado
+        s.d = 0;
+        s.cor = Cores.CINZA;
+        distancias[s.getIndice()].d = 0;
+        distancias[s.getIndice()].cor = Cores.CINZA;
+        Fila Q = new Fila();
+        Q.insereNaFila(s);
+        //Queue<Vertice> Q = new LinkedList();
+        //Q.add(s);
+        
+        //Laço para realizar a busca de caminhos BRANCOS em todos os nós a partir de s
+        while (!Q.filaVazia()) {
+            Vertice u = (Vertice) Q.removeDaFila();           
+            for (i = 0; i < totaldevertices; i++) {
+                Arco a = matAdj[u.getIndice()][i];
+                if (a != null) {
+                    int ind = a.getDestino().getIndice();
+                    if (distancias[ind].cor.equals(Cores.BRANCO)) {
+                        Vertice v = a.getDestino();
+                        distancias[v.getIndice()].cor = Cores.CINZA;
+                        distancias[v.getIndice()].d = u.d + 1;
+                        //matDistancia[s.indice][i] = distancias[v.indice].d;
+                        Q.insereNaFila(distancias[v.getIndice()]);
+                    }
+                }
+            }
+            distancias[u.getIndice()].cor = Cores.PRETO;
+        }   
     }
     
     public int[][] getMatDistancia(){
